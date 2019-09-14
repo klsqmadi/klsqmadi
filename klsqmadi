@@ -1,0 +1,19 @@
+#include <stdio.h>
+int main()
+{
+	int i;
+	printf("请输入一段字符串:\n");
+	char s[1024];
+	scanf("%s",s);
+	printf("加密前:%s\n",s);
+	for(i=0;s[i];i++)
+	{
+		if(s[i]>=48&&s[i]<=122)
+		{
+		s[i]+=3;
+		} 
+
+	}
+	printf("加密后:%s",s);
+
+}
