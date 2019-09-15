@@ -1,19 +1,37 @@
 #include <stdio.h>
-int main()
+#include <stdlib.h>
+int main(void)
 {
 	int i;
-	printf("请输入一段字符串:\n");
-	char s[1024];
-	scanf("%s",s);
-	printf("加密前:%s\n",s);
-	for(i=0;s[i];i++)
+	char b[1024];
+	FILE *fp;
+	char a[1024];
+	if((fp=fopen("a.cpp","w"))==NULL)
 	{
-		if(s[i]>=48&&s[i]<=122)
+		printf("文件打开失败！\n");
+		exit(EXIT_FAILURE);
+	}
+	scanf("%s",b);
+	fputs(b,fp);
+	fclose(fp);
+	if((fp=fopen("a.cpp","r"))==NULL)
+	{
+		printf("文件打开失败！\n");
+		exit(EXIT_FAILURE);
+	}
+	while(!feof(fp))
+	{
+		fgets(a,1024,fp);
+			printf("加密前:%s\n",a);
+	for(i=0;a[i];i++)
+	{
+		if(a[i]>=48&&a[i]<=122)
 		{
-		s[i]+=3;
+		a[i]+=3;
 		} 
 
 	}
-	printf("加密后:%s",s);
-
+	printf("加密后:%s",a);
+	}
+	return 0;
 }
